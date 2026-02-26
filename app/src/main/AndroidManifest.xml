@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
-            android:name=".SecondCarActivity"
+            android:name=".SecondStudentActivity"
             android:exported="false" />
         <activity
-            android:name=".CarActivity"
+            android:name=".StudentActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
