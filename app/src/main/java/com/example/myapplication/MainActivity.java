@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class MainActivity extends AppCompatActivity implements BlankFragmentA.ISendData {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +33,4 @@ public class MainActivity extends AppCompatActivity implements BlankFragmentA.IS
         });
     }
 
-    @Override
-    public void sendData(String name) {
-        BlankFragmentB blankFragmentB = (BlankFragmentB) getSupportFragmentManager().findFragmentById(R.id.fragment_container2);
-        blankFragmentB.reciveDataFra1(name);
-    }
 }

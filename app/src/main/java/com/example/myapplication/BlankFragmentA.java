@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ public class BlankFragmentA extends Fragment {
 
     private EditText edName;
     private Button btnSend;
+    private SharedViewModel viewModel;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,23 +33,10 @@ public class BlankFragmentA extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private View mView;
-    private ISendData iSendData;
-
-    public interface ISendData{
-        void sendData(String name);
-    }
 
     public BlankFragmentA() {
         // Required empty public constructor
     }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        iSendData = (ISendData) getActivity();
-    }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -81,19 +70,18 @@ public class BlankFragmentA extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mView = inflater.inflate(R.layout.fragment_blank_a, container, false);
-        edName = mView.findViewById(R.id.ed_fra_name);
-        btnSend = mView.findViewById(R.id.btn_send);
+        View view = inflater.inflate(R.layout.fragment_blank_a, container, false);
+        edName = view.findViewById(R.id.ed_fra_name);
+        btnSend = view.findViewById(R.id.btn_send);
+
+        viewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
 
         btnSend.setOnClickListener(v -> {
-            sendeDataToFragmnet2();
+            String name = edName.getText().toString().trim();
+            viewModel.setName(name);
         });
 
-        return mView;
+        return view;
     }
 
-    private void sendeDataToFragmnet2() {
-        String strName = edName.getText().toString().trim();
-        iSendData.sendData(strName);
-    }
 }

@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +21,7 @@ public class BlankFragmentB extends Fragment {
 
     private EditText edNameFra2;
     private Button btnUpdate;
-    private View mview;
+    private SharedViewModel viewModel;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,15 +67,17 @@ public class BlankFragmentB extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        mview = inflater.inflate(R.layout.fragment_blank_b, container, false);
-        edNameFra2 = mview.findViewById(R.id.ed_fra2_name);
-        btnUpdate = mview.findViewById(R.id.btn_update);
+        View view = inflater.inflate(R.layout.fragment_blank_b, container, false);
+        edNameFra2 = view.findViewById(R.id.ed_fra2_name);
+        btnUpdate = view.findViewById(R.id.btn_update);
 
-        btnUpdate.setOnClickListener(v -> {
-            updateDatatoFra1();
+        viewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+
+        viewModel.getName().observe(getViewLifecycleOwner(), name ->{
+            edNameFra2.setText(name);
         });
 
-        return mview;
+        return view;
     }
 
     private void updateDatatoFra1() {
