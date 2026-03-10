@@ -43,7 +43,7 @@ public class SecondStudentActivity extends AppCompatActivity {
         }
 
         btnBack.setOnClickListener(v -> {
-            finish();
+            finish();;
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
