@@ -80,10 +80,4 @@ public class BlankFragmentB extends Fragment {
         return view;
     }
 
-    private void updateDatatoFra1() {
-
-    }
-    public void reciveDataFra1(String name){
-        edNameFra2.setText(name);
-    }
 }
