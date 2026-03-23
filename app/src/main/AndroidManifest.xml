@@ -12,13 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".FoodDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityRecyler"
+            android:exported="false" />
+        <activity
             android:name=".ItemStudent"
             android:exported="false" />
         <activity
             android:name=".SecondStudentActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivityRecyler"
+            android:name=".MainFoodActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

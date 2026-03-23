@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.myapplication.models.SharedViewModel;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link BlankFragmentB#newInstance} factory method to
